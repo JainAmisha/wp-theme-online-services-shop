@@ -1,5 +1,8 @@
 <?php
-// require get_theme_file_path('/inc/custom-settings.php');
+require get_theme_file_path('/inc/default.php');
+require get_theme_file_path('/inc/custom-settings.php');
+require get_theme_file_path('/inc/customizer.php');
+
 
 add_action('wp_enqueue_scripts', 'online_services_shop_files');
 add_action('after_setup_theme', 'online_services_shop_features');
@@ -26,8 +29,20 @@ function online_services_shop_files(){
 
 
 function online_services_shop_features() {
-    add_theme_support('title-tag');
-    add_theme_support('tagline');
+   // Add Theme support Title Tag
+	add_theme_support( 'title-tag' );
+
+	// Logo
+	add_theme_support( 'custom-logo', array(
+		'width'       => 250,
+		'height'      => 250,
+		'flex-width'  => true,
+		'flex-height'  => true,
+	));
+
+    // Add theme support for selective refresh for widgets.
+	add_theme_support( 'customize-selective-refresh-widgets' );
+    
     add_theme_support('post-thumbnails');
+
 }
-  

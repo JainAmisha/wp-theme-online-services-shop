@@ -35,8 +35,9 @@
             <div class="col-lg-6 align-self-center">
               <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                 <!-- <h2>Welcome to <em><span>Suraj </span>Online Works</em></h2> -->
-                <h2>Welcome to <em><span><?php echo get_bloginfo('title'); ?></span></em></h2>
-                <p>We provide all online services under one roof. Quality work and customer satisfaction is our topmost priority. Contact us now to get your work done at pocket-friendly costs.
+                <h2>Welcome to <em><span class="site-title"><?php echo get_bloginfo('title'); ?></span></em></h2>
+                <p class="site-short-description">
+                    <?php echo theme_get_option('short_description_setting'); ?>
                 </p>
                 <br>
                 <div id="track-work">
@@ -137,14 +138,8 @@
         <div class="col-lg-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
           <div class="section-heading">
             <h2>Who we are?</h2>
-            <p>
-              We at Suraj Online Works help people with all kinds of online services, 
-              whether it is about booking online tickets, paying bills, filling a form, 
-              or applying for government identities such as Aadhar Card, PAN Card, and 
-              other certificates including - e-shram card, income certificate, 
-              caste certificate and much more.
-              <br>
-              Our service cost is kept minimal to help as many people as we can.
+            <p class="site-long-description">
+                <?php echo theme_get_option('long_description_setting'); ?>
             </p>
           </div>
           <div class="row">
