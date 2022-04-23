@@ -1,0 +1,229 @@
+.header-area .main-nav .nav li:last-child{
+    padding-left: 0;
+}
+
+.header-area .main-nav .logo h4{
+    font-size: 20px;
+    line-height: initial;
+}
+
+.header-area .main-nav .logo{
+    margin-top: 21px;
+}
+
+.main-banner{
+  padding-bottom: 0;
+}
+
+#features{
+  margin-top: 100px;
+}
+
+#about{
+  margin-top: 0;
+}
+
+.our-services, .our-portfolio{
+  padding-bottom: 100px;
+}
+
+.our-services
+{
+  padding-top: 50px;
+}
+
+.our-portfolio{
+  background-color: rgba(153,117,112,0.09);
+  padding-top: 100px;
+}
+
+.card.bg-transparent{
+  background-color: #fff !important;
+}
+
+.card.bg-danger{
+  background-color: #fe3f40 !important;
+}
+
+.owl-carousel .owl-nav button.owl-prev, 
+.owl-carousel .owl-nav button.owl-next, 
+.owl-carousel button.owl-dot
+{
+  height: 6px;
+  width: 14px;
+  background-color: #03a4ed;
+  opacity: .3;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  margin: 0 2px;
+  transition: all .4s ease;
+}
+
+.owl-dots{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.owl-carousel .owl-nav button.owl-prev.active, 
+.owl-carousel .owl-nav button.owl-next.active,
+.owl-carousel button.owl-dot.active
+{
+  width: 25px;
+  opacity: 1;
+}
+
+.single-testimonial {
+    background-color: rgba(153,117,112,0.09);
+    padding: 35px;
+    transition: all .4s ease;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#testimonials
+{
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.subscribe-section .subscribe-wrapper {
+    background-color: #fe3f40;
+    background-image: linear-gradient(315deg, #f9454633 0%, #df3d3d 74%);
+    padding: 100px;
+}
+
+.subscribe-section .subscribe-wrapper .subscribe-form input {
+  width: 100%;
+  padding: 20px 30px;
+  padding-right: 142px;
+  border-radius: 30px;
+  background: #fff;
+  color: #5B657E;
+  border: 1px solid transparent;
+  -webkit-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+  outline: 0;
+}
+
+.subscribe-form {
+position: relative;
+}
+
+.subscribe-section .subscribe-wrapper .subscribe-form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 17.5px 25px;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 30px;
+  background-color: #03a4ed;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+@media (max-width: 600px) {
+  .subscribe-section .subscribe-wrapper {
+    padding: 74px 20px;
+  }
+
+  .subscribe-section .subscribe-wrapper .subscribe-form input
+  {
+      padding: 12px 30px;
+      margin-bottom: 9px;
+  }
+
+  .subscribe-section .subscribe-wrapper .subscribe-form button{
+    position: initial;
+    padding: 10px 25px;
+    font-weight: 400;
+  }
+
+  .subscribe-section .subscribe-wrapper .section-title h2{
+    font-size: 35px;
+  }
+
+  .subscribe-section .subscribe-wrapper .section-title{
+    margin-bottom: 15px;
+  }
+}
+
+.text-left{
+  text-align: left !important;
+}
+
+.swal2-title{
+  font-size: x-large !important;
+}
+
+.swal2-actions{
+  margin-top: 0 !important;
+  font-size: 14px;
+}
+
+.scroll-top 
+{
+    border-radius: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 18px;
+    color: #fff;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-top:hover {
+  color: #fff;
+  background: rgba(88, 100, 255);
+}
+
+.our-blog .right-list ol li {
+  margin-bottom: 10px !important;
+}
+
+.our-team{
+  padding: 100px 0;
+  background: linear-gradient(rgba(123, 112, 153, 0.2), rgb(238, 62, 63)), url('../images/team-bg.jpg');
+}
+
+.team-card{
+  position: relative;
+  margin-bottom: 80px;
+}
+
+.team-info-single{
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 90%;
+  /* bottom: 0; */
+  border-radius: 3px;
+}
+
+.team-social-icon{
+  color: #fe3f40;
+  padding: 0 2px;
+}
+
+.our-services .section-heading p{
+  margin-bottom: 30px;
+}
