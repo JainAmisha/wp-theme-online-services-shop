@@ -12,13 +12,25 @@ if (class_exists( 'WP_Customize_Control'))
 		public function register_controls()
 		{
 			global $wp_customize;
+
+			$this->description_settings($wp_customize);
+			// $this->image_settings($wp_customize);
+		
+			require OSS_THEME_DIR.'/inc/selectors/logo-selector.php';
+			require OSS_THEME_DIR.'/inc/selectors/description-selector.php';
+		}
+
+		public function description_settings($wp_customize)
+		{
+			// Panel
 			$wp_customize->add_panel('front_page_panel', array(
-					'title' 	=> __( 'Theme Options', 'online_services_shop' ),
+				'title' 	=> __( 'Theme Options', 'online_services_shop' ),
 					'priority' 	=> 2,
 					'capability' => 'edit_theme_options',
 				)
 			);
 
+			// Section
 			$wp_customize->add_section(
 				'frontpage_custom_data',
 				array(
@@ -29,6 +41,7 @@ if (class_exists( 'WP_Customize_Control'))
 				)
 			);
 
+			// Short Description Setting
 			$wp_customize->add_setting( 'theme_options[short_description_setting]', array(
 				'default'    		=> $this->defaults['short_description_setting'],
 				'type'              => 'theme_mod',
@@ -46,6 +59,7 @@ if (class_exists( 'WP_Customize_Control'))
 				)
 			);
 
+			// Long Description Setting
 			$wp_customize->add_setting( 'theme_options[long_description_setting]', array(
 				'default'    		=> $this->defaults['long_description_setting'],
 				'type'              => 'theme_mod',
@@ -62,9 +76,30 @@ if (class_exists( 'WP_Customize_Control'))
 					'type' => 'textarea'
 				)
 			);
+		}
 
-			require get_theme_file_path('/inc/selectors/logo-selector.php');
-			require get_theme_file_path('/inc/selectors/description-selector.php');
+		public function image_settings($wp_customize)
+		{
+			$wp_customize->add_section( 'frontpage_custom_image' , array(
+				'title'      => __('FrontPage Custom Images','aneeq'),
+				'priority'   => 20,
+				'capability' => 'edit_theme_options',
+				'panel'		=>'front_page_panel',
+			) );
+
+			$wp_customize->add_setting(
+			'oss_banner_image', array(
+				'capability'     => 'edit_theme_options',
+				'sanitize_callback' => 'sanitize_url',
+			));
+
+			$wp_customize->add_control('oss_banner_image', array(
+				'label'   => __('Banner Image','aneeq'),
+				'section' => 'frontpage_custom_image',
+				'type'    => 'image',
+				'priority'   => 140,
+			));
+
 		}
 	}
 	new Online_Services_Shop_Custom_Options();

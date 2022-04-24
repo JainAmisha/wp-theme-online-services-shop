@@ -5,9 +5,8 @@ if(!function_exists('theme_default_values'))
     function theme_default_values(){
         $defaults = [];
 
-        $defaults['short_description_setting'] = 'We provide all online services under one roof. Quality work and customer satisfaction is our topmost priority. Contact us now to get your work done at pocket-friendly costs.';
-        $defaults['long_description_setting'] = 'We at Suraj Online Works help people with all kinds of online services, whether it is about booking online tickets, paying bills, filling a form, or applying for government identities such as Aadhar Card, PAN Card, and other certificates including - e-shram card, income certificate, caste certificate and much more.
-        Our service cost is kept minimal to help as many people as we can.';
+        $defaults['short_description_setting'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        $defaults['long_description_setting'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.';
 
         return $defaults;
     }

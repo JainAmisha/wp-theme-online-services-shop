@@ -7,7 +7,14 @@
         <div class="col-12">
           <nav class="main-nav">
             <a href="index.php" class="logo">
-              <h4>Suraj <br> <span>Online Works</span></h4>
+              <!-- <h4>Suraj <br> <span>Online Works</span></h4> -->
+                <?php if(has_custom_logo()):?>
+									<div class="logo-image" style="width:100px; height:100px; display:inline-block;">
+										<?php the_custom_logo();?>
+									</div>
+                <?php else: ?>
+                  <h4 class="logo-text"><span><?php echo get_bloginfo('title'); ?></span></h4>
+                <?php endif;?>
             </a>
             <ul class="nav">
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
@@ -36,7 +43,7 @@
               <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                 <!-- <h2>Welcome to <em><span>Suraj </span>Online Works</em></h2> -->
                 <h2>Welcome to <em><span class="site-title"><?php echo get_bloginfo('title'); ?></span></em></h2>
-                <p class="site-short-description">
+                <p class="site-short-description" style="z-index:20;">
                     <?php echo theme_get_option('short_description_setting'); ?>
                 </p>
                 <br>
@@ -56,7 +63,7 @@
             </div>
             <div class="col-lg-6">
               <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="<?php echo get_theme_file_uri('assets/images/banner-right-image.png') ?>" alt="banner image">
+                <img src="<?php echo OSS_THEME_URL.'/assets/images/banner-right-image.png'; ?>" alt="banner image">
               </div>
             </div>
           </div>
@@ -70,7 +77,7 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="left-image wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <img src="<?php echo get_theme_file_uri('assets/images/about-left-image.png') ?>" alt="features image">
+            <img src="<?php echo OSS_THEME_URL.'/assets/images/about-left-image.png'; ?>" alt="features image">
           </div>
         </div>
         <div class="col-lg-8 align-self-center">
@@ -79,7 +86,7 @@
               <div class="col-lg-6">
                 <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                   <div class="icon">
-                    <img src="<?php echo get_theme_file_uri('assets/images/service-icon-01.png')?>" alt="better customer service">
+                    <img src="<?php echo OSS_THEME_URL.'/assets/images/service-icon-01.png';?>" alt="better customer service">
                   </div>
                   <div class="right-text">
                     <h4>Better Customer Service</h4>
@@ -90,7 +97,7 @@
               <div class="col-lg-6">
                 <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
                   <div class="icon">
-                    <img src="<?php echo get_theme_file_uri('assets/images/service-icon-02.png')?>" alt="quality work">
+                    <img src="<?php echo OSS_THEME_URL.'/assets/images/service-icon-02.png';?>" alt="quality work">
                   </div>
                   <div class="right-text">
                     <h4>Quality Work</h4>
@@ -101,7 +108,7 @@
               <div class="col-lg-6">
                 <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.9s">
                   <div class="icon">
-                    <img src="<?php echo get_theme_file_uri('assets/images/service-icon-03.png') ?>" alt="on-time delivery">
+                    <img src="<?php echo OSS_THEME_URL.'/assets/images/service-icon-03.png'; ?>" alt="on-time delivery">
                   </div>
                   <div class="right-text">
                     <h4>On-Time Delivery</h4>
@@ -112,7 +119,7 @@
               <div class="col-lg-6">
                 <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="1.1s">
                   <div class="icon">
-                    <img src="<?php echo get_theme_file_uri('assets/images/service-icon-04.png') ?>" alt="work tracking">
+                    <img src="<?php echo OSS_THEME_URL.'/assets/images/service-icon-04.png'; ?>" alt="work tracking">
                   </div>
                   <div class="right-text">
                     <h4>Work Tracking</h4>
@@ -132,7 +139,7 @@
       <div class="row">
         <div class="col-lg-6 align-self-center  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
           <div class="left-image">
-            <img src="<?php echo get_theme_file_uri('assets/images/services-left-image.png') ?>" alt="about us image">
+            <img src="<?php echo OSS_THEME_URL.'/assets/images/services-left-image.png'; ?>" alt="about us image">
           </div>
         </div>
         <div class="col-lg-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
@@ -186,7 +193,7 @@
           <div class="col-md-4 pt-4">
               <div class="card bg-transparent border">
                   <div class="card-body">
-                      <img class="border-0 rounded" src="<?php echo get_theme_file_uri('assets/images/services/aadhar.jpg') ?>" alt="aadhar card">
+                      <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/aadhar.jpg'; ?>" alt="aadhar card">
                       <div class="content p-2 pt-3">
                           <h4 class="mb-2">Aadhar Card</h4>
                           <p>
@@ -213,7 +220,7 @@
           <div class="col-md-4 pt-4">
             <div class="card bg-transparent border">
                 <div class="card-body">
-                    <img class="border-0 rounded" src="<?php echo get_theme_file_uri('assets/images/services/pan.jpg') ?>" alt="PAN Card">
+                    <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/pan.jpg'; ?>" alt="PAN Card">
                     <div class="content p-2 pt-3">
                         <h4 class="mb-2">PAN Card</h4>
                         <p>
@@ -240,7 +247,7 @@
           <div class="col-md-4 pt-4">
             <div class="card bg-transparent border">
                 <div class="card-body">
-                    <img class="border-0 rounded" src="<?php echo get_theme_file_uri('assets/images/services/railway.jpg') ?>" alt="railway ticket">
+                    <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/railway.jpg'; ?>" alt="railway ticket">
                     <div class="content p-2 pt-3">
                         <h4 class="mb-2">Railway Ticket</h4>
                         <p>
@@ -267,7 +274,7 @@
           <div class="col-md-4 pt-4">
             <div class="card bg-transparent border">
                 <div class="card-body">
-                    <img class="border-0 rounded" src="<?php echo get_theme_file_uri('assets/images/services/flight.jpg') ?>" alt="flight tickets">
+                    <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/flight.jpg'; ?>" alt="flight tickets">
                     <div class="content p-2 pt-3">
                         <h4 class="mb-2">Flight/Airplane Ticket</h4>
                         <p>
@@ -294,7 +301,7 @@
           <div class="col-md-4 pt-4">
             <div class="card bg-transparent border">
                 <div class="card-body">
-                    <img class="border-0 rounded" src="<?php echo get_theme_file_uri('assets/images/services/electric.jpg') ?>" alt="electricity bill">
+                    <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/electric.jpg'; ?>" alt="electricity bill">
                     <div class="content p-2 pt-3">
                         <h4 class="mb-2">Electricity Bill</h4>
                         <p>
@@ -333,7 +340,7 @@
       <div class="row pb-2">
         <div class="col-lg-4 col-md-6 pt-3">
           <div class="card team-card">
-              <img src="<?php echo get_theme_file_uri('assets/images/team/deepak.jpg') ?>" class="w-100" alt="deepak bharti">
+              <img src="<?php echo OSS_THEME_URL.'/assets/images/team/deepak.jpg'; ?>" class="w-100" alt="deepak bharti">
               <div class="bg-light text-dark text-center py-2 team-info-single">
                 <div>
                     <h5>Deepak Bharti</h5>
@@ -352,7 +359,7 @@
         </div>
         <div class="col-lg-4 col-md-6 pt-3">
           <div class="card team-card">
-            <img src="<?php echo get_theme_file_uri('assets/images/team/suraj.jpg') ?>" class="w-100" alt="suraj bharti">
+            <img src="<?php echo OSS_THEME_URL.'/assets/images/team/suraj.jpg'; ?>" class="w-100" alt="suraj bharti">
             <div class="bg-light text-dark text-center py-2 team-info-single">
               <div>
                   <h5>Suraj Bharti</h5>
@@ -371,7 +378,7 @@
         </div>
         <div class="col-lg-4 col-md-6 pt-3">
           <div class="card team-card">
-            <img src="<?php echo get_theme_file_uri('assets/images/team/abhishek.jpg') ?>" class="w-100" alt="abhishek bharti">
+            <img src="<?php echo OSS_THEME_URL.'/assets/images/team/abhishek.jpg'; ?>" class="w-100" alt="abhishek bharti">
             <div class="bg-light text-dark text-center py-2 team-info-single">
               <div>
                   <h5>Abhishek Bharti</h5>
@@ -517,14 +524,14 @@
         </div>
         <div class="col-lg-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.25s">
           <div class="top-dec">
-            <img src="<?php echo get_theme_file_uri('assets/images/blog-dec.png') ?>" alt="">
+            <img src="<?php echo OSS_THEME_URL.'/assets/images/blog-dec.png'; ?>" alt="">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.25s">
           <div class="left-image">
-            <img src="<?php echo get_theme_file_uri('assets/images/big-blog-thumb.jpg') ?>" alt="Workspace Desktop">
+            <img src="<?php echo OSS_THEME_URL.'/assets/images/big-blog-thumb.jpg'; ?>" alt="Workspace Desktop">
             <div class="info">
               <div class="inner-content">
                 <ul>
@@ -631,7 +638,7 @@
               <span class="contact-wait"></span>
             </div>
             <div class="contact-dec">
-              <img src="<?php echo get_theme_file_uri('assets/images/contact-decoration.png') ?>" alt="">
+              <img src="<?php echo OSS_THEME_URL.'/assets/images/contact-decoration.png' ?>" alt="">
             </div>
           </form>
         </div>
