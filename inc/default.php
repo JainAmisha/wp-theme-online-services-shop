@@ -7,14 +7,17 @@ if(!function_exists('theme_default_values'))
 
         $defaults['short_description_setting'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
         $defaults['long_description_setting'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.';
+		$defaults['oss_number_of_features'] = 4;
+		$defaults['oss_about_section_heading']	= 'Who We Are?';
+		$defaults['oss_about_section_description']	= 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.';
 
         return $defaults;
     }
 }
 
-if ( ! function_exists( 'theme_get_option' ) )
+if ( ! function_exists( 'oss_get_option' ) )
 {
-	function theme_get_option( $key ) {
+	function oss_get_option( $key ) {
 
 		$default_options = theme_default_values();
 		if ( empty( $key ) ) {

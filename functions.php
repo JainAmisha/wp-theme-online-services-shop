@@ -44,6 +44,7 @@ function online_services_shop_features() {
 		// 'flex-height'  => true,
 	));
 
+    // add_theme_support( 'custom-header' );
     // add_image_size('ossLogo', 100, 100, true);
 
     // Add theme support for selective refresh for widgets.

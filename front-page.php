@@ -44,7 +44,7 @@
                 <!-- <h2>Welcome to <em><span>Suraj </span>Online Works</em></h2> -->
                 <h2>Welcome to <em><span class="site-title"><?php echo get_bloginfo('title'); ?></span></em></h2>
                 <p class="site-short-description" style="z-index:20;">
-                    <?php echo theme_get_option('short_description_setting'); ?>
+                    <?php echo oss_get_option('short_description_setting'); ?>
                 </p>
                 <br>
                 <div id="track-work">
@@ -63,7 +63,8 @@
             </div>
             <div class="col-lg-6">
               <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="<?php echo OSS_THEME_URL.'/assets/images/banner-right-image.png'; ?>" alt="banner image">
+                <!-- <php echo OSS_THEME_URL.'/assets/images/banner-right-image.png'; ?> -->
+                <img src="<?php echo wp_get_attachment_url(oss_get_option('oss_banner_image_right')); ?>" alt="banner image">
               </div>
             </div>
           </div>
@@ -83,50 +84,25 @@
         <div class="col-lg-8 align-self-center">
           <div class="services">
             <div class="row">
-              <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                  <div class="icon">
-                    <img src="<?php echo OSS_THEME_URL.'/assets/images/service-icon-01.png';?>" alt="better customer service">
+              <?php 
+                $oss_number_of_features = oss_get_option( 'oss_number_of_features' );
+                for( $i=1; $i<=$oss_number_of_features; $i++ )
+			          {
+                  ?>
+                  <div class="col-lg-6">
+                    <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+                      <div class="icon">
+                        <img src="<?php echo wp_get_attachment_url(oss_get_option('oss_feature_image'.$i)); ?>" alt="better customer service">
+                      </div>
+                      <div class="right-text">
+                        <h4><?php echo oss_get_option('oss_feature_heading'.$i); ?></h4>
+                        <p><?php echo oss_get_option('oss_feature_description'.$i); ?></p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="right-text">
-                    <h4>Better Customer Service</h4>
-                    <p>We never stop until our customer's issues are fixed. 24*7 Support.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
-                  <div class="icon">
-                    <img src="<?php echo OSS_THEME_URL.'/assets/images/service-icon-02.png';?>" alt="quality work">
-                  </div>
-                  <div class="right-text">
-                    <h4>Quality Work</h4>
-                    <p>Quality of work is something we never compromise with.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.9s">
-                  <div class="icon">
-                    <img src="<?php echo OSS_THEME_URL.'/assets/images/service-icon-03.png'; ?>" alt="on-time delivery">
-                  </div>
-                  <div class="right-text">
-                    <h4>On-Time Delivery</h4>
-                    <p>People trust us because we always deliver work on time.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="1.1s">
-                  <div class="icon">
-                    <img src="<?php echo OSS_THEME_URL.'/assets/images/service-icon-04.png'; ?>" alt="work tracking">
-                  </div>
-                  <div class="right-text">
-                    <h4>Work Tracking</h4>
-                    <p>You can anytime track status of your work from our website.</p>
-                  </div>
-                </div>
-              </div>
+                  <?php
+                }
+              ?>
             </div>
           </div>
         </div>
@@ -139,41 +115,34 @@
       <div class="row">
         <div class="col-lg-6 align-self-center  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
           <div class="left-image">
-            <img src="<?php echo OSS_THEME_URL.'/assets/images/services-left-image.png'; ?>" alt="about us image">
+          <!-- <php echo OSS_THEME_URL.'/assets/images/services-left-image.png'; ?> -->
+            <img src="<?php echo wp_get_attachment_url(oss_get_option('oss_about_section_image_left')); ?>" alt="about us image">
           </div>
         </div>
         <div class="col-lg-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
           <div class="section-heading">
-            <h2>Who we are?</h2>
+            <h2><?php echo oss_get_option('oss_about_section_heading'); ?></h2>
             <p class="site-long-description">
-                <?php echo theme_get_option('long_description_setting'); ?>
+                <?php echo oss_get_option('oss_about_section_description'); ?>
             </p>
           </div>
           <div class="row">
-            <div class="col-lg-12">
-              <div class="second-bar progress-skill-bar">
-                <h4>Ticket Booking</h4>
-                <!-- <span>90%</span> -->
-                <div class="filled-bar"></div>
-                <div class="full-bar"></div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="third-bar progress-skill-bar">
-                <h4>Online Form Filling</h4>
-                <!-- <span>95%</span> -->
-                <div class="filled-bar"></div>
-                <div class="full-bar"></div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="second-bar progress-skill-bar">
-                <h4>Other Online Works</h4>
-                <!-- <span>92%</span> -->
-                <div class="filled-bar"></div>
-                <div class="full-bar"></div>
-              </div>
-            </div>
+            <?php
+              $progress_bars = 3;
+              for( $i=1; $i<=$progress_bars; $i++ )
+              {
+                ?>
+                <div class="col-lg-12">
+                  <div class="second-bar progress-skill-bar">
+                    <h4><?php echo oss_get_option('oss_progress_bar_heading'.$i); ?></h4>
+                    <span><?php echo oss_get_option('oss_progress_bar_value'.$i); ?>%</span>
+                    <div class="filled-bar"></div>
+                    <div class="full-bar"></div>
+                  </div>
+                </div>
+                <?php
+              }
+            ?>
           </div>
         </div>
       </div>
