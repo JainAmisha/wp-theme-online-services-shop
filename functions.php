@@ -4,7 +4,7 @@ define("OSS_THEME_URL", get_template_directory_uri());
 define("OSS_THEME_DIR", get_template_directory());
 
 require OSS_THEME_DIR.'/inc/default.php';
-require OSS_THEME_DIR.'/inc/custom-settings.php';
+require OSS_THEME_DIR.'/inc/customizer-settings.php';
 require OSS_THEME_DIR.'/inc/customizer.php';
 
 
