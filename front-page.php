@@ -92,7 +92,7 @@
                   <div class="col-lg-6">
                     <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                       <div class="icon">
-                        <img src="<?php echo wp_get_attachment_url(oss_get_option('oss_feature_image'.$i)); ?>" alt="better customer service">
+                        <img src="<?php echo wp_get_attachment_url(oss_get_option('oss_feature_image'.$i)); ?>" alt="">
                       </div>
                       <div class="right-text">
                         <h4><?php echo oss_get_option('oss_feature_heading'.$i); ?></h4>
@@ -154,146 +154,65 @@
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading  wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <h2 class="mb-5">What Our Shop <em>Offers</em> &amp; What We <span>Provide</span></h2>
+            <!-- <h2 class="mb-5">What Our Shop <em>Offers</em> &amp; What We <span>Provide</span></h2> -->
+            <h2 class="mb-5"><?php echo oss_get_option( 'oss_services_section_heading' ); ?></h2>
           </div>
         </div>
       </div>
       <div class="row">
-          <div class="col-md-4 pt-4">
-              <div class="card bg-transparent border">
-                  <div class="card-body">
-                      <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/aadhar.jpg'; ?>" alt="aadhar card">
-                      <div class="content p-2 pt-3">
-                          <h4 class="mb-2">Aadhar Card</h4>
-                          <p>
-                              Aadhar Card Creation, Correction & Updation, Aadhar Card Printing, etc.
-                          </p>
-                          <div class="text-left row p-2">
-                            <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                                <a href="https://wa.me/919651885051" target="_blank" class="btn btn-success btn-block py-1" style="display:block;">
-                                  <i class="fa fa-whatsapp"></i>  
-                                  Whatsapp
-                                </a>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                                <a href="tel:+919651885051" class="btn btn-primary btn-block py-1" style="display:block;">
-                                  <i class="fa fa-phone"></i>
-                                  Call
-                                </a>
-                            </div>
+        <?php $oss_number_of_services = oss_get_option( 'oss_number_of_services' );
+          for( $i=1; $i<=$oss_number_of_services; $i++ )
+          {
+            ?>
+            <div class="col-md-4 pt-4">
+                <div class="card bg-transparent border">
+                    <div class="card-body">
+                        <?php 
+                          $image = wp_get_attachment_url(oss_get_option('oss_service_image'.$i));
+                          if(empty($image)){
+                            $image = OSS_THEME_URL.'/assets/images/services/default-service.jpg';
+                          }
+                        ?>
+                        <img class="border-0 rounded" src="<?php echo $image; ?>" alt="">
+                        <div class="content p-2 pt-3">
+                            <h4 class="mb-2"><?php echo oss_get_option('oss_service_heading'.$i); ?></h4>
+                            <p><?php echo oss_get_option('oss_service_description'.$i); ?></p>
+                            <div class="text-left row p-2">
+                              <?php 
+                                if(oss_get_option('oss_display_whatsapp_button'))
+                                {
+                                  $classes = oss_get_option('oss_display_call_button') ? 'col-lg-6 col-md-12 col-6' : 'col-12';
+                                  ?>
+                                  <div class="<?php echo $classes; ?> pt-2 px-1">
+                                      <a href="https://wa.me/919651885051" target="_blank" class="btn btn-success btn-block py-1" style="display:block;">
+                                        <i class="fa fa-whatsapp"></i>  
+                                        Whatsapp
+                                      </a>
+                                  </div>
+                                  <?php
+                                }
+                              ?>
+                              <?php 
+                                if(oss_get_option('oss_display_call_button'))
+                                {
+                                  ?>
+                                    <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
+                                        <a href="tel:+919651885051" class="btn btn-primary btn-block py-1" style="display:block;">
+                                          <i class="fa fa-phone"></i>
+                                          Call
+                                        </a>
+                                    </div>
+                                  <?php
+                                }
+                              ?>
+                          </div>
                         </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4 pt-4">
-            <div class="card bg-transparent border">
-                <div class="card-body">
-                    <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/pan.jpg'; ?>" alt="PAN Card">
-                    <div class="content p-2 pt-3">
-                        <h4 class="mb-2">PAN Card</h4>
-                        <p>
-                            Applying Online For PAN Card (Permanent Account Number)
-                        </p>
-                        <div class="text-left row p-2">
-                          <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                              <a href="https://wa.me/919651885051" target="_blank" class="btn btn-success btn-block py-1" style="display:block;">
-                                <i class="fa fa-whatsapp"></i>  
-                                Whatsapp
-                              </a>
-                          </div>
-                          <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                              <a href="tel:+919651885051" class="btn btn-primary btn-block py-1" style="display:block;">
-                                <i class="fa fa-phone"></i>
-                                Call
-                              </a>
-                          </div>
-                      </div>
                     </div>
                 </div>
             </div>
-          </div>
-          <div class="col-md-4 pt-4">
-            <div class="card bg-transparent border">
-                <div class="card-body">
-                    <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/railway.jpg'; ?>" alt="railway ticket">
-                    <div class="content p-2 pt-3">
-                        <h4 class="mb-2">Railway Ticket</h4>
-                        <p>
-                            Booking of Normal and Tatkal Ticket to any station(India) online.
-                        </p>
-                        <div class="text-left row p-2">
-                          <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                              <a href="https://wa.me/919651885051" target="_blank" class="btn btn-success btn-block py-1" style="display:block;">
-                                <i class="fa fa-whatsapp"></i>  
-                                Whatsapp
-                              </a>
-                          </div>
-                          <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                              <a href="tel:+919651885051" class="btn btn-primary btn-block py-1" style="display:block;">
-                                <i class="fa fa-phone"></i>
-                                Call
-                              </a>
-                          </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-          <div class="col-md-4 pt-4">
-            <div class="card bg-transparent border">
-                <div class="card-body">
-                    <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/flight.jpg'; ?>" alt="flight tickets">
-                    <div class="content p-2 pt-3">
-                        <h4 class="mb-2">Flight/Airplane Ticket</h4>
-                        <p>
-                            Booking of domestic and international Flight Tickets.
-                        </p>
-                        <div class="text-left row p-2">
-                          <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                              <a href="https://wa.me/919651885051" target="_blank" class="btn btn-success btn-block py-1" style="display:block;">
-                                <i class="fa fa-whatsapp"></i>  
-                                Whatsapp
-                              </a>
-                          </div>
-                          <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                              <a href="tel:+919651885051" class="btn btn-primary btn-block py-1" style="display:block;">
-                                <i class="fa fa-phone"></i>
-                                Call
-                              </a>
-                          </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-          <div class="col-md-4 pt-4">
-            <div class="card bg-transparent border">
-                <div class="card-body">
-                    <img class="border-0 rounded" src="<?php echo OSS_THEME_URL.'/assets/images/services/electric.jpg'; ?>" alt="electricity bill">
-                    <div class="content p-2 pt-3">
-                        <h4 class="mb-2">Electricity Bill</h4>
-                        <p>
-                            Get your Electricity Bill payment done online with us.
-                        </p>
-                        <div class="text-left row p-2">
-                          <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                              <a href="https://wa.me/919651885051" target="_blank" class="btn btn-success btn-block py-1" style="display:block;">
-                                <i class="fa fa-whatsapp"></i>  
-                                Whatsapp
-                              </a>
-                          </div>
-                          <div class="col-lg-6 col-md-12 col-6 pt-2 px-1">
-                              <a href="tel:+919651885051" class="btn btn-primary btn-block py-1" style="display:block;">
-                                <i class="fa fa-phone"></i>
-                                Call
-                              </a>
-                          </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
+            <?php
+          }
+        ?>
       </div>
     </div>
   </div>

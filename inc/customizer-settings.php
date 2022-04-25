@@ -12,13 +12,16 @@ if (class_exists( 'WP_Customize_Control'))
 		public function register_controls()
 		{
 			global $wp_customize;
+			require OSS_THEME_DIR.'/inc/class-accordion-control.php';
 
 			$this->description_settings($wp_customize);
 			$this->image_settings($wp_customize);
-			$this->features_settings($wp_customize);
+			$this->features_section_settings($wp_customize);
 			$this->about_section_settings($wp_customize);
-		
+			$this->services_section_settings($wp_customize);
+
 			require OSS_THEME_DIR.'/inc/sanitize.php';
+			require OSS_THEME_DIR.'/inc/active-callback.php';
 			require OSS_THEME_DIR.'/inc/selectors/logo-selector.php';
 			require OSS_THEME_DIR.'/inc/selectors/description-selector.php';
 		}
@@ -96,12 +99,12 @@ if (class_exists( 'WP_Customize_Control'))
 
 		}
 
-		public function features_settings($wp_customize)
+		public function features_section_settings($wp_customize)
 		{
 			$wp_customize->add_section(
 				'frontpage_features_section',
 				array(
-					'title'    	=> __( 'Features' ),
+					'title'    	=> __( 'Features Section' ),
 					'priority' 	=> 20,
 					'capability' => 'edit_theme_options',
 					'panel'		=>'front_page_sections',
@@ -186,11 +189,11 @@ if (class_exists( 'WP_Customize_Control'))
 						$wp_customize,
 						'theme_options[oss_feature_image'.$i.']', 
 						array(
-							'label'		=> __('Feature Image', 'oss'),
-							'description' => __('Image dimensions should be 70×70 pixels.', 'oss'),
-							'section'	=> 'frontpage_features_section',
-							'height'	=> 70, // cropper Height
-							'width'		=> 70
+							'label'			=> sprintf( __('Feature Image #%1$s', 'oss'), $i),
+							'description' 	=> __('Image dimensions should be 70×70 pixels.', 'oss'),
+							'section'		=> 'frontpage_features_section',
+							'height'		=> 70, // cropper Height
+							'width'			=> 70
 						)
 					)
 				);
@@ -304,6 +307,217 @@ if (class_exists( 'WP_Customize_Control'))
 					'section'     => 'frontpage_about_section',   
 					'settings'    => 'theme_options[oss_progress_bar_value'.$i.']',
 					'type'        => 'number'
+					)
+				);
+			}
+
+		}
+
+		public function services_section_settings($wp_customize)
+		{
+			$wp_customize->add_section(
+				'frontpage_services_section', 
+				array(
+					'title'      => __('Services Section','oss'),
+					'priority'   => 20,
+					'capability' => 'edit_theme_options',
+					'panel'		=>'front_page_sections',
+				) 
+			);
+
+			// Heading
+			$wp_customize->add_setting('theme_options[oss_services_section_heading]', 
+				array(
+				'type'              => 'theme_mod',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'sanitize_text_field',
+				)
+			);
+
+			$wp_customize->add_control('theme_options[oss_services_section_heading]', 
+				array(
+				'label'       => __('Section Heading', 'oss'),
+				'section'     => 'frontpage_services_section',   
+				'settings'    => 'theme_options[oss_services_section_heading]',
+				'type'        => 'text'
+				)
+			);
+
+
+			// 2. Number of items
+			$wp_customize->add_setting('theme_options[oss_number_of_services]', 
+				array(
+				'default' 			=> $this->defaults['oss_number_of_services'],
+				'type'              => 'theme_mod',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'oss_sanitize_number_range'
+				)
+			);
+
+			$wp_customize->add_control('theme_options[oss_number_of_services]', 
+				array(
+				'label'       => __('Number Of Services', 'oss'),
+				'description' => __('Save & Refresh the customizer to see its effect. Maximum is 15.', 'oss'),
+				'section'     => 'frontpage_services_section',   
+				'settings'    => 'theme_options[oss_number_of_services]',
+				'type'        => 'number',
+				'input_attrs' => array(
+						'min'	=> 1,
+						'max'	=> 15,
+						'step'	=> 1,
+					),
+				)
+			);
+
+			$wp_customize->add_setting('theme_options[oss_display_whatsapp_button]', 
+				array(
+				'default' 			=> $this->defaults['oss_display_whatsapp_button'],
+				'type'              => 'theme_mod',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'oss_checkbox_sanitize'
+				)
+			);
+
+			$wp_customize->add_control('theme_options[oss_display_whatsapp_button]', 
+				array(
+				'label'       => __('Whatsapp Button Enable', 'oss'),
+				'section'     => 'frontpage_services_section',   
+				'settings'    => 'theme_options[oss_display_whatsapp_button]',
+				'type'        => 'checkbox',
+				)
+			);
+
+			$wp_customize->add_setting('theme_options[oss_service_section_whatsapp_link]', 
+				array(
+				'default'           => $this->defaults['oss_service_section_whatsapp_link'],
+				'type'              => 'theme_mod',
+				'capability'        => 'edit_theme_options',	
+				'sanitize_callback' => 'sanitize_url'
+				)
+			);
+
+			$wp_customize->add_control('theme_options[oss_service_section_whatsapp_link]', 
+				array(
+				'label'       => __('Whatsapp Link', 'oss'),
+				'section'     => 'frontpage_services_section',   
+				'settings'    => 'theme_options[oss_service_section_whatsapp_link]',	
+				'active_callback' => 'oss_whatsapp_icon_active',		
+				'type'        => 'url'
+				)
+			);
+
+			$wp_customize->add_setting('theme_options[oss_display_call_button]', 
+				array(
+				'default' 			=> $this->defaults['oss_display_call_button'],
+				'type'              => 'theme_mod',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'oss_checkbox_sanitize'
+				)
+			);
+
+			$wp_customize->add_control('theme_options[oss_display_call_button]', 
+				array(
+				'label'       => __('Call Button Enable', 'oss'),
+				'section'     => 'frontpage_services_section',   
+				'settings'    => 'theme_options[oss_display_call_button]',
+				'type'        => 'checkbox',
+				)
+			);
+
+			$wp_customize->add_setting('theme_options[oss_service_section_call_link]', 
+				array(
+				'default'           => $this->defaults['oss_service_section_call_link'],
+				'type'              => 'theme_mod',
+				'capability'        => 'edit_theme_options',	
+				'sanitize_callback' => 'sanitize_url'
+				)
+			);
+
+			$wp_customize->add_control('theme_options[oss_service_section_call_link]', 
+				array(
+				'label'       => __('Call Link', 'oss'),
+				'section'     => 'frontpage_services_section',   
+				'settings'    => 'theme_options[oss_service_section_call_link]',	
+				'active_callback' => 'oss_call_icon_active',		
+				'type'        => 'url'
+				)
+			);
+
+
+			$wp_customize->add_setting( 'theme_options[accordion]',array(
+				'capability' 			=> 'edit_theme_options'
+			));
+
+			$wp_customize->add_control(
+				new WP_OSS_Accordion_Customize_Control
+				(
+					$wp_customize,
+					'theme_options[accordion]', 
+					array(
+						'label'			=> __('Test', 'oss'),
+						'section'		=> 'frontpage_services_section',
+					)
+				)
+			);
+
+			$oss_number_of_services = oss_get_option( 'oss_number_of_services' );
+
+			for( $i=1; $i<=$oss_number_of_services; $i++ )
+			{
+				// Heading
+				$wp_customize->add_setting('theme_options[oss_service_heading'.$i.']', 
+					array(
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => 'sanitize_text_field',
+					)
+				);
+
+				$wp_customize->add_control('theme_options[oss_service_heading'.$i.']', 
+					array(
+					'label'       => sprintf( __('Service Heading #%1$s', 'oss'), $i),
+					'section'     => 'frontpage_services_section',   
+					'settings'    => 'theme_options[oss_service_heading'.$i.']',
+					'type'        => 'text'
+					)
+				);
+
+				// Description
+				$wp_customize->add_setting('theme_options[oss_service_description'.$i.']', 
+					array(
+					'type'              => 'theme_mod',
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => 'sanitize_textarea_field'
+					)
+				);
+
+				$wp_customize->add_control('theme_options[oss_service_description'.$i.']', 
+					array(
+					'label'       => sprintf( __('Service Description #%1$s', 'oss'), $i),
+					'section'     => 'frontpage_services_section',   
+					'settings'    => 'theme_options[oss_service_description'.$i.']',
+					'type'        => 'textarea'
+					)
+				);
+
+				// Image
+				$wp_customize->add_setting( 'theme_options[oss_service_image'.$i.']',array(
+					// 'sanitize_callback'		=> 'esc_url_raw',
+					'capability' 			=> 'edit_theme_options'
+				));
+
+				$wp_customize->add_control(
+					new WP_Customize_Cropped_Image_Control
+					(
+						$wp_customize,
+						'theme_options[oss_service_image'.$i.']', 
+						array(
+							'label'			=> sprintf( __('Service Image #%1$s', 'oss'), $i),
+							'description' 	=> __('Image dimensions should be 286×180 pixels.', 'oss'),
+							'section'		=> 'frontpage_services_section',
+							'width'			=> 286,
+							'height'		=> 180
+						)
 					)
 				);
 			}

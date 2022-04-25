@@ -7,9 +7,15 @@ if(!function_exists('theme_default_values'))
 
         $defaults['short_description_setting'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
         $defaults['long_description_setting'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.';
-		$defaults['oss_number_of_features'] = 4;
+		$defaults['oss_number_of_features'] = 1;
 		$defaults['oss_about_section_heading']	= 'Who We Are?';
 		$defaults['oss_about_section_description']	= 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.';
+		$defaults['oss_services_section_heading'] = 'What Our Shop Offers & What We Provide';
+		$defaults['oss_number_of_services'] = 1;
+		$defaults['oss_display_whatsapp_button'] = false;
+		$defaults['oss_display_call_button'] = false;
+		$defaults['oss_service_section_whatsapp_link'] = '#';
+		$defaults['oss_service_section_call_link'] = '#';
 
         return $defaults;
     }

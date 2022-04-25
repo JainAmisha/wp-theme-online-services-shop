@@ -23,3 +23,13 @@ if ( !function_exists( 'oss_sanitize_number_range' ) )
 		return ( $min <= $input && $input <= $max && is_int( $input / $step ) ? $input : $setting->default );
 	}
 }
+
+
+if ( ! function_exists( 'oss_checkbox_sanitize' ) )
+{
+	function oss_checkbox_sanitize( $checked ) {
+
+		return ( ( isset( $checked ) && true === $checked ) ? true : false );
+
+	}
+}
